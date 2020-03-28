@@ -9,11 +9,10 @@ public class HomePage extends Page {
         super(webDriver);
     }
 
-    @FindBy(className = "linkWrap noCount")
-    private WebElement profileName;
+    @FindBy(className = "_2s25")
+    private WebElement homeMenu;
+    public String menuText = homeMenu.getText();
 
-    public void clickLink(){
-        profileName.click();
-    }
+
 
 }

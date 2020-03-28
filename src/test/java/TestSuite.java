@@ -1,3 +1,5 @@
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
@@ -9,10 +11,10 @@ public class TestSuite extends TestBase {
 
     @Parameters({"email", "pwd"})
     @Test(description = "facebook login page example")
-    public void testCaseLogin(String email, String pwd){
+    public void testCaseSuccessfulLogin(String email, String pwd){
         Assert.assertEquals(webDriver.getTitle(), "Facebook - Log In or Sign Up");
         HomePage homePage = loginSignUpPage.correctLogin(email, pwd);
-        homePage.clickLink();
-
+        new WebDriverWait(webDriver, 20).until(webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+        Assert.assertEquals(homePage.menuText, "Home");
     }
 }

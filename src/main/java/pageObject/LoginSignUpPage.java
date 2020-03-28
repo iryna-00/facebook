@@ -36,6 +36,4 @@ public class LoginSignUpPage extends Page {
         return PageFactory.initElements(webDriver, HomePage.class);
     }
 
-
-
 }
