@@ -13,7 +13,6 @@ public class TestBase {
 
     protected WebDriver webDriver;
     protected LoginSignUpPage loginSignUpPage;
-    protected HomePage homePage;
 
     @Parameters({"browserName"})
     @BeforeMethod(alwaysRun = true)

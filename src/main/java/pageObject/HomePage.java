@@ -9,9 +9,11 @@ public class HomePage extends Page {
         super(webDriver);
     }
 
-    @FindBy(className = "_1vp5")
+    @FindBy(className = "linkWrap noCount")
     private WebElement profileName;
-    public String name = profileName.getText();
 
+    public void clickLink(){
+        profileName.click();
+    }
 
 }
