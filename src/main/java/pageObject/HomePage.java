@@ -9,10 +9,24 @@ public class HomePage extends Page {
         super(webDriver);
     }
 
-    @FindBy(className = "_2s25")
+    @FindBy(className = "_1vp5")
     private WebElement homeMenu;
-    public String menuText = homeMenu.getText();
+    public String profileName = "";
+    public String setName (){
+        profileName = homeMenu.getText();
+        return profileName;
+    }
 
+    @FindBy(id = "userNavigationLabel")
+    private WebElement navigationMenu;
+    public void clickMenu(){
+        navigationMenu.click();
+    }
 
+    @FindBy(className = "_54nh")
+    private WebElement logoutButton;
+    public void clickLogout(){
+        logoutButton.click();
+    }
 
 }

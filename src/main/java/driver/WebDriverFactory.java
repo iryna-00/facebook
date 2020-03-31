@@ -18,6 +18,7 @@ public class WebDriverFactory {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--start-maximized");
+            options.addArguments("--disable-notifications");
             webDriver = new ChromeDriver(options);
         } else if (FIREFOX_NAME.equalsIgnoreCase(browserName)) {
             WebDriverManager.firefoxdriver().setup();

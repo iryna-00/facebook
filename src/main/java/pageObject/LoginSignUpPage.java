@@ -8,6 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.concurrent.TimeUnit;
 
 public class LoginSignUpPage extends Page {
+    public LoginSignUpPage (WebDriver webDriver){
+        super(webDriver);
+    }
+
     @FindBy(className = "fb_logo img sp_3UHi6Z3AUhD sx_6c0194")
     private WebElement logo;
 
@@ -23,17 +27,18 @@ public class LoginSignUpPage extends Page {
     @FindBy(linkText = "Forgot account?")
     private WebElement passwordReset;
 
-
-    public LoginSignUpPage (WebDriver webDriver){
-        super(webDriver);
-    }
-
     public HomePage correctLogin (String email, String pwd){
         emailField.sendKeys(email);
         passField.sendKeys(pwd);
         loginButton.click();
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return PageFactory.initElements(webDriver, HomePage.class);
+    }
+
+    public void incorrectLogin (String incorrectEmail, String incorrectPassword){
+        emailField.sendKeys(incorrectEmail);
+        passField.sendKeys(incorrectPassword);
+        loginButton.click();
     }
 
 }
