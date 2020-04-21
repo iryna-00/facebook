@@ -8,6 +8,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import pageObject.LoginSignUpPage;
 
+import java.util.Random;
+
 public class TestBase {
 
     protected WebDriver webDriver;
@@ -23,6 +25,7 @@ public class TestBase {
         WebDriverWait wait = new WebDriverWait(webDriver, 20);
         loginSignUpPage = PageFactory.initElements(webDriver, LoginSignUpPage.class);
     }
+
 
     protected void navigateTo(String URL){
         webDriver.get(URL);
