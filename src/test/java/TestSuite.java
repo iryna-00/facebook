@@ -30,12 +30,15 @@ public class TestSuite extends TestBase {
         Assert.assertEquals(webDriver.getTitle(), "Log into Facebook | Facebook");
     }
 
-    @Parameters({"firstName", "lastName", "emailRegistration", "pwdRegistration"})
+    @Parameters({"firstName", "lastName", "emailRegistration", "pwdRegistration", "monthIx", "dayIx", "yearIx"})
     @Test(description = "facebook successful registration")
-    public void testCaseSuccessfulRegistration(String firstName, String lastName, String emailRegistration, String pwdRegistration){
+    public void testCaseSuccessfulRegistration(String firstName, String lastName, String emailRegistration, String pwdRegistration, int monthIx, int dayIx, int yearIx ){
         Assert.assertEquals(webDriver.getTitle(), "Facebook - Log In or Sign Up");
-        HomePage homePage = loginSignUpPage.correctRegistration(firstName, lastName, emailRegistration, pwdRegistration);
+        HomePage homePage = loginSignUpPage.correctRegistration(firstName, lastName, emailRegistration, pwdRegistration, monthIx, dayIx, yearIx);
+        Assert.assertTrue(loginSignUpPage.checkIfSelected());
         new WebDriverWait(webDriver, 20).until(webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+        homePage.setName();
+        Assert.assertEquals(homePage.profileName, firstName);
 
     }
 }

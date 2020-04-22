@@ -14,7 +14,7 @@ public class Page <T extends Page>{
     }
 
     protected String getSaltString() {
-        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        String SALTCHARS = "abcdefghijklmnopqrstuvwxyz";
         StringBuilder salt = new StringBuilder();
         Random rnd = new Random();
         while (salt.length() < 10) { // length of the random string.
@@ -24,7 +24,6 @@ public class Page <T extends Page>{
         String saltStr = salt.toString();
         return saltStr;
     }
-
-//    explicit waits can be added
+    //    explicit waits can be added
 }
 
